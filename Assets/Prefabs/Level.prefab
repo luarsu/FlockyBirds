@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1519549359694138}
+  m_IsPrefabParent: 1
+--- !u!1 &1519549359694138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4741556847645258}
+  - component: {fileID: 114787727405074130}
+  - component: {fileID: 114578879926900488}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4741556847645258
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519549359694138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114578879926900488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519549359694138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0fd8d90175eae44a90a6118503cca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFOV: 120
+  maxAcceleration: 40
+  maxVelocity: 40
+  wanderJitter: 10
+  wanderRadious: 2
+  wanderDistance: 3
+  wanderPriority: 10
+  cohesionRadius: 30
+  cohesionPriority: 90
+  alignmentRadius: 15
+  alignmentPriority: 90
+  separationRadius: 15
+  separationPriority: 90
+  avoidanceRadius: 35
+  avoidancePriority: 700
+  stimuliRadius: 70
+  stimuliPriority: 600
+--- !u!114 &114787727405074130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519549359694138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1712c815708adc04d8dc30b85a2d03c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockPrefab: {fileID: 4218360111741818, guid: 270577bd9ba2dbb42afa14340562ecfc,
+    type: 2}
+  enemyPrefab: {fileID: 4508851760765240, guid: 38efbdb236612d742b5ed215ea802a25,
+    type: 2}
+  enemy2: {fileID: 114731399592945916, guid: ca58a68a25aa7bc4caa3901254cf5434, type: 2}
+  pstimul: {fileID: 114365739172955414, guid: f340cf85b0560f44e8b30e583bd43f11, type: 2}
+  numFlock: 100
+  numEnemies: 10
+  members: []
+  enemies: []
+  pstimulis: []
+  bounds: 100
+  spawnRadius: 50
