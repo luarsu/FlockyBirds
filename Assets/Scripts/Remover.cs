@@ -7,6 +7,7 @@ public class Remover : MonoBehaviour {
 
     //Class for the remover of objects 
 
+    public int score;
     public Vector3 position;
     public Vector3 velocity;
     public Level level;

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -18,8 +14,4 @@ public class Obstacle : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

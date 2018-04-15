@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Class to have general control of the level
 
 public class Level : MonoBehaviour {
+    public Text tScore;
+    public int score = 0;
     public Transform flockPrefab;
     public Transform enemyPrefab;
     public Enemy2 enemy2;
@@ -17,13 +20,17 @@ public class Level : MonoBehaviour {
     public List<PositiveStimuli> pstimulis;
     public float bounds;
     public float spawnRadius;
+    public bool levelEnd;
 
     // Use this for initialization
     void Start () {
+
+        levelEnd = false;
         members = new List<flockMember>();
         enemies = new List<Enemy>();
 
-        Spawn(flockPrefab, 20);
+
+        Spawn(flockPrefab, 100);
         //Spawn(enemyPrefab, numEnemies);
 
         members.AddRange(FindObjectsOfType<flockMember>());
@@ -33,6 +40,12 @@ public class Level : MonoBehaviour {
 
     void Update()
     {
+        if (!levelEnd) {
+            updateScore();
+            tScore.text = score.ToString();
+        }
+        
+
 
         //Create negative stimuli with left click
         if (Input.GetMouseButtonDown(0)) {
@@ -63,6 +76,9 @@ public class Level : MonoBehaviour {
 
     }
 
+    public void updateScore() {
+        score = score + (members.Count)/5;
+    }
 
     //Get the neighbours that are inside the redius defined
     public List<flockMember> GetNeighbours(flockMember member, float radius) {

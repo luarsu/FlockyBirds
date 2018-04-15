@@ -10,4 +10,12 @@ public class Enemy2 : Enemy
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Remover")
+        {
+            level.enemies.Remove(this);
+        }
+    }
+
 }
