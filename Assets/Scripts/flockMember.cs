@@ -10,14 +10,14 @@ public class flockMember : MonoBehaviour {
     public Vector3 velocity;
     public Vector3 acceleration;
 
-    public Level level;
+    public FlockManager flockManager;
     public MemberConfig conf;
 
     Vector3 wanderTarget;
 
     void Start () {
         //Get level and config data
-        level = FindObjectOfType<Level>();
+        flockManager = FindObjectOfType<FlockManager>();
         conf = FindObjectOfType<MemberConfig>();
 
         position = transform.position;
@@ -75,7 +75,7 @@ public class flockMember : MonoBehaviour {
     {
         Vector3 cohesionVector = new Vector3();
         int countMembers = 0;
-        var neighbours = level.GetNeighbours(this, conf.cohesionRadius);
+        var neighbours = flockManager.GetNeighbours(this, conf.cohesionRadius);
         //No neighbours close to the member
         if (neighbours.Count == 0)
         {
@@ -106,7 +106,7 @@ public class flockMember : MonoBehaviour {
     Vector3 Alignment()
     {
         Vector3 alignVector = new Vector3();
-        var members = level.GetNeighbours(this, conf.alignmentRadius);
+        var members = flockManager.GetNeighbours(this, conf.alignmentRadius);
         if (members.Count == 0)
         {
             return alignVector;
@@ -127,7 +127,7 @@ public class flockMember : MonoBehaviour {
     Vector3 Separation()
     {
         Vector3 separateVector = new Vector3();
-        var members = level.GetNeighbours(this, conf.separationRadius);
+        var members = flockManager.GetNeighbours(this, conf.separationRadius);
         if (members.Count == 0)
         {
             return separateVector;
@@ -154,7 +154,7 @@ public class flockMember : MonoBehaviour {
     Vector3 Avoidance() {
         Vector3 avoidVector = new Vector3();
         //get enemies within the range
-        var enemyList = level.GetEnemies(this, conf.avoidanceRadius);
+        var enemyList = flockManager.GetEnemies(this, conf.avoidanceRadius);
         if (enemyList.Count == 0) {
             return avoidVector;
         }
@@ -169,7 +169,7 @@ public class flockMember : MonoBehaviour {
     //Returns vector acceleration direction towards the closer positive stimuli
     Vector3 GoToPositiveStimuli() {
         Vector3 stimuliVector = new Vector3();
-        var stimuliList = level.GetStimuli(this, conf.stimuliRadius);
+        var stimuliList = flockManager.GetStimuli(this, conf.stimuliRadius);
         if (stimuliList.Count == 0)
         {
             return stimuliVector;
@@ -220,7 +220,7 @@ public class flockMember : MonoBehaviour {
 
         if (collision.gameObject.tag == "Remover" || collision.gameObject.tag == "Obstacle")
         {
-            level.members.Remove(this);
+            flockManager.members.Remove(this);
         }
     }
 

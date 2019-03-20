@@ -10,8 +10,6 @@ public class Obstacle : MonoBehaviour {
         if (collision.gameObject.tag == "FlockMember") {
             Destroy(collision.gameObject);
         }
-        
-
     }
 
 }

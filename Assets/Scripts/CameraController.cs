@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     public Vector3 velocity;
     public bool reached;
     public GameObject menu;
-    public Level level;
+    public FlockManager flockManager;
     public MoneyKeeper mon;
     public Text t;
     // Use this for initialization
@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+    //Move with the set velocity
 	void Update () {
 
         if (position.y < 1200)
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour {
             transform.position = position;
         }
         else if (!reached) {
-            level.levelEnd = true;
+            flockManager.levelEnd = true;
             reached = true;
             Invoke("showMenu", 2.5f);
 
@@ -35,7 +36,7 @@ public class CameraController : MonoBehaviour {
     }
 
     public void showMenu() {
-        t.text = level.score.ToString();
+        t.text = flockManager.score.ToString();
         menu.SetActive(true);
         mon.setCurrentGems(500);
     }

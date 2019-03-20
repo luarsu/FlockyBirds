@@ -10,12 +10,12 @@ public class Remover : MonoBehaviour {
     public int score;
     public Vector3 position;
     public Vector3 velocity;
-    public Level level;
+    public FlockManager flockManager;
 
     // Use this for initialization
     void Start () {
         position = transform.position;
-        level = FindObjectOfType<Level>();
+        flockManager = FindObjectOfType<FlockManager>();
     }
 	
 	// Update position
@@ -28,7 +28,7 @@ public class Remover : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
             Destroy(collision.gameObject, .1f);
-        if (level.members.Count == 0) {
+        if (flockManager.members.Count == 0) {
             //reload scene when die
             int scene = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(scene, LoadSceneMode.Single);

@@ -9,7 +9,7 @@ public class DetectingEnemy : MonoBehaviour {
     public Vector3 initialPos;
     public float speed = 50.0f;
     bool rightLeft = true;
-    public Level level;
+    public FlockManager flockManager;
     public bool withtarget;
 
 
@@ -17,7 +17,7 @@ public class DetectingEnemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         withtarget = false;
-        level = FindObjectOfType<Level>();
+        flockManager = FindObjectOfType<FlockManager>();
         initialPos = transform.position;
         target = initialPos - new Vector3(-70,0,0);
 
@@ -25,9 +25,8 @@ public class DetectingEnemy : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+    //Enemies that move from one side to the other.
 	void Update () {
-
-        //checkTargets();
 
         transform.position = Vector3.MoveTowards(transform.position, target, (speed * Time.deltaTime));
 
@@ -47,33 +46,14 @@ public class DetectingEnemy : MonoBehaviour {
             
         }
     }
-    /*
-    void checkTargets() {
 
-        if (!withtarget)
-        {
-            var enemyList = level.GetNeighbours(this, detectingRadious);
-            if (enemyList.Count > 0)
-            {
-                targetBird = enemyList[0];
-                withtarget = true;
-
-            }
-        } //Update target position
-        else {
-            target = targetBird.position;
-        }
-
-    }
-    */
+    //Destroy colliding birds
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "FlockMember")
         {
             Destroy(collision.gameObject);
         }
-
-
     }
 
 }

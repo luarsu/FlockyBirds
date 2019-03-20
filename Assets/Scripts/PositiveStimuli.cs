@@ -7,13 +7,13 @@ public class PositiveStimuli : MonoBehaviour
 
     //Class for the positive stimuli
 
-    public Level level;
+    public FlockManager flockManager;
     public Vector3 position;
 
     // Use this for initialization
     void Start()
     {
-        level = FindObjectOfType<Level>();
+        flockManager = FindObjectOfType<FlockManager>();
         position = transform.position;
     }
 
@@ -22,7 +22,7 @@ public class PositiveStimuli : MonoBehaviour
     {
         if (collision.gameObject.tag == "FlockMember" || collision.gameObject.tag == "Remover")
         {
-            level.pstimulis.Remove(this);
+            flockManager.pstimulis.Remove(this);
         }
     }
 }
